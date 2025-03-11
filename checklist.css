@@ -1,0 +1,71 @@
+
+.chklist-form {
+    display:flex;
+    flex-direction: column;
+}
+
+.chklist-control {
+    width: 100%;
+}
+
+.chklist-add {
+    float: right;
+}
+
+.chklist-items {
+    width: 100%;
+    clear: both;
+    padding: 5px;
+}
+
+.chklist-item {
+    border: 1px solid grey;
+    margin-bottom: 5px;
+    padding: 2px;
+    display: flex;
+    flex-direction: row;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1.2em;
+}
+
+.chklist-item-name {
+    width: 65%;
+    background-color: white;
+    padding: 2px;
+    margin: 1px;
+    text-align: center;
+}
+
+.chklist-item-boxes {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    width: 25%;
+    background-color: white;
+    padding: 2px;
+    margin: 1px;
+    vertical-align: middle;
+}
+
+.chklist-item-controls {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 10%;
+    padding: 2px;
+    vertical-align: middle;
+}
+
+.chklist-name {
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    font-size: 1.2em;
+}
+
+.chklist-desc {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1.0em;
+}
+
+

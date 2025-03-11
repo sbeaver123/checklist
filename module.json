@@ -1,18 +1,32 @@
 {
   "id": "checklist",
-  "title": "Check List",
-  "description": "A system-agnostic module for tracking lists of items.",
-  "authors": [
-    { "name": "Simon Beaver" }
-  ],
-  "version": "1.0.2",
+  "title": "CheckList",
+  "version": "1.0.3",
   "compatibility": {
     "minimum": "12",
     "verified": "12"
   },
-  "esmodules": ["scripts/checklist.js"],
+  "authors": [
+    {
+      "name": "Simon Beaver",
+      "flags": {}
+    }
+  ],
+  "esmodules": [
+    "checklist.js"
+  ],
+  "languages": [
+    {
+      "lang": "en",
+      "name": "English",
+      "path": "lang/en.json"
+    }
+  ],
+  "styles": [
+    "checklist.css"
+  ],
+  "socket": true,
   "url": "https://github.com/sbeaver123/checklist",
-  "manifest": "https://github.com/sbeaver123/checklist/releases/download/v1.0.2/module.json",
-  "download": "https://github.com/sbeaver123/checklist/releases/download/v1.0.2/checklist.zip"
+  "manifest": "https://github.com/sbeaver123/checklist/releases/download/v1.0.3/module.json",
+  "download": "https://github.com/sbeaver123/checklist/releases/download/v1.0.3/checklist.zip"
 }
-
