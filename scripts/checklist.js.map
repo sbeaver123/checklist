@@ -1,0 +1,1 @@
+{"version":3,"file":"checklist.js","sources":["../../src/ts/checklist.ts"],"sourcesContent":["\nHooks.once(\"init\", () => {\n    console.log(\"CheckList Module Initialising...\");\n});\n"],"names":[],"mappings":"AACA,MAAM,KAAK,OAAQ,IAAM,CACrB,QAAQ,IAAI,kCAAkC,CAClD,CAAC"}

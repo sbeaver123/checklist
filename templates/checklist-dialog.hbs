@@ -1,0 +1,26 @@
+
+<form id="checklist-form" class="chklist-form">
+    <h1>{{title}}</h1>
+    <div class="chklist-control">
+        <a class="chklist-add">{{ localize "CHK.additem" }}</a>
+    </div>
+
+    <div id="checklist-items" class="chklist-items">
+        {{#each listItems as |item idx| }}
+        <div class="chklist-item">
+            <div class="chklist-item-name">{{item.name}}</div>
+            <div class="chklist-item-boxes">
+                {{#boxes item.checkboxes item.checked}}
+                    <input name="@name" type="checkbox" data-item-id="{{idx}}"
+                        {{#if @checked}}checked{{/if}}/>
+                {{/boxes}}
+            </div>
+            <div class="chklist-item-controls" data-item-id="{{idx}}">
+                <a class="edit"><i class="fas fa-edit"></i></a>
+                <a class="delete"><i class="fas fa-trash"></i></a>
+            </div>
+        </div>
+        {{/each}}
+    </div>
+</form>
+
