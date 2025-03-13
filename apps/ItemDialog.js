@@ -6,7 +6,6 @@ export default class ItemDialog extends FormApplication {
     constructor(...args) {
         super(...args);
 
-        console.log(args);
         this.itemId = args[0];
         this.item = args[1];
         this.parent = args[2];

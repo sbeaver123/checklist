@@ -1,5 +1,6 @@
 
 import CheckListDialog from "./apps/ChecklistDialog.js";
+import SocketHandler from "./apps/SocketHandler.js";
 
 export class CheckList {
 
@@ -38,6 +39,8 @@ Hooks.once("init", () => {
         default: [],
         config: false
     });
+
+    SocketHandler.registerListener();
 });
 
 Hooks.on("renderSceneControls", (controls, html) => {
@@ -45,14 +48,10 @@ Hooks.on("renderSceneControls", (controls, html) => {
 });
 
 Handlebars.registerHelper("boxes", (numboxes, numchecked, block) => {
-    console.log(`Numboxes: ${numboxes}`);
-    console.log(`Numcheck: ${numchecked}`);
-    console.log(block);
 
     var fullblock = "";
     for (var i = 1; i <= numboxes; i++) {
         block.data.name = i;
-        console.log(i <= numchecked);
         if (i <= (numchecked)) {
             block.data.checked = true;
         } else {

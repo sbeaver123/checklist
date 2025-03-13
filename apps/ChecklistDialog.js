@@ -1,5 +1,6 @@
 import { ListData } from "./ListData.js";
 import ItemDialog from "./ItemDialog.js";
+import SocketHandler from "./SocketHandler.js";
 
 export default class CheckListDialog extends FormApplication {
 
@@ -15,20 +16,24 @@ export default class CheckListDialog extends FormApplication {
     }
 
     constructor(...args) {
-        super(...args);
-
-        game.socket?.on(this.identifier, (data) => {
-            this.setData(data);
-        });
+        super(...args);    
 
         if (game.settings.get("checklist", "data")) {
             const varData = game.settings.get("checklist", "data");
             ListData.data = varData;
         }
+
+        game.socket?.on(SocketHandler.identifier, (data) => {
+            console.log("Received update via dialog");
+            console.log(data);
+            ListData.setData(data);
+            this.refresh();
+        });
     }
 
     async getData() {
         const items = ListData.getData();
+        console.log("GetData");
         console.log(items);
         return {
             "title": game.settings.get("checklist", "title"),
@@ -66,16 +71,18 @@ export default class CheckListDialog extends FormApplication {
     }
 
     onChange(event) {
-        console.log(event);
         const itemId = $(event.currentTarget).data("itemId");
-        console.log(itemId);
         if (event.currentTarget.checked) {
             ListData.data[itemId].checked++;
         } else {
             ListData.data[itemId].checked--;
         }
-        console.log(ListData.data[itemId]);
         this.updateData();
+    }
+
+    refresh() {
+        console.log("Refreshing dialog");
+        this.render(false);
     }
 
     setData(newData) {
@@ -84,13 +91,7 @@ export default class CheckListDialog extends FormApplication {
     }
 
     updateData() {
-        // If you have permission to update settings, update the checklist setting
-        // with the current value of the data array. By default this will mean that
-        // only the GM holds the array as a setting.
-        if (game.permissions.SETTINGS_MODIFY.includes(game.user.role)) {
-            game.settings.set("checklist", "data", ListData.data);
-        }
-        return game.socket.emit(this.identifier, ListData.data);
+        SocketHandler.sendUpdate();
     }
 
     _updateObject() {
